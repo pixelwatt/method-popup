@@ -140,7 +140,7 @@ function method_popup_register_metabox() {
 
     $cmb_options->add_field (
         array(
-            'name' => esc_html__( 'Link Title', 'cmb2' ),
+            'name' => esc_html__( 'Link Title / Button Label', 'cmb2' ),
             'id'   => '_method_popup_img_link_title',
             'type' => 'text',
         )
@@ -173,7 +173,7 @@ function add_this_script_footer(){
                         $link = get_post_meta( $popup, '_method_popup_img_link', true );
                         $title = get_post_meta( $popup, '_method_popup_img_link_title', true );
                         echo '
-                            <div class="modal" id="methodPopup' . $popup . '" tabindex="-1">
+                            <div class="modal methodPopupModal" id="methodPopup' . $popup . '" tabindex="-1">
                                 <div class="modal-dialog modal-lg">
                                     <div class="modal-content">
                                         <div class="modal-header d-none">
@@ -184,6 +184,14 @@ function add_this_script_footer(){
                                             <a href="' . $link . '" title="' . esc_attr( $title ) . '">
                                             ' . wp_get_attachment_image( $img_id, 'large', false, array( 'class' => 'img-fluid' ) ) . '
                                             </a>
+                                            <div style="text-align: center; padding: 24px;">
+                                                <a class="btn btn-lg btn-primary" href="' . $link . '">
+                                                ' . esc_html( $title ) . '
+                                                </a>&nbsp;&nbsp;&nbsp;
+                                                <a class="btn btn-lg btn-secondary" data-bs-dismiss="modal" aria-label="Close">
+                                                Close
+                                                </a>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -197,6 +205,11 @@ function add_this_script_footer(){
                                     }
                                 });
                             </script>
+                            <style>
+                                .methodPopupModal .modal-body {
+                                    padding: 0 !important;
+                                }
+                            </style>
                         ';
                 }
                 
