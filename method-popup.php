@@ -181,15 +181,13 @@ function add_this_script_footer(){
                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                         </div>
                                         <div class="modal-body">
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                             <a href="' . $link . '" title="' . esc_attr( $title ) . '">
                                             ' . wp_get_attachment_image( $img_id, 'large', false, array( 'class' => 'img-fluid' ) ) . '
                                             </a>
                                             <div style="text-align: center; padding: 24px;">
                                                 <a class="btn btn-lg btn-primary" href="' . $link . '">
                                                 ' . esc_html( $title ) . '
-                                                </a>&nbsp;&nbsp;&nbsp;
-                                                <a class="btn btn-lg btn-secondary" data-bs-dismiss="modal" aria-label="Close">
-                                                Close
                                                 </a>
                                             </div>
                                         </div>
@@ -206,8 +204,28 @@ function add_this_script_footer(){
                                 });
                             </script>
                             <style>
+                            .modal-content {
+                                border-radius: 12px;
+                                overflow: hidden;
+                            }
                                 .methodPopupModal .modal-body {
                                     padding: 0 !important;
+                                    position: relative;
+                                }
+                                .methodPopupModal .modal-body .btn-primary {
+                                    font-weight: 800;
+                                    text-transform: uppercase;
+                                }
+                                .methodPopupModal .modal-body .btn-close {
+                                    position: absolute;
+                                    top: 12px;
+                                    right: 12px;
+                                    z-index: 9999;
+                                    background-color: rgba(255,255,255,0.5);
+                                    border: none;
+                                    color: #000;
+                                    padding: 0.5rem;
+                                    font-size: 1.5rem;
                                 }
                             </style>
                         ';
